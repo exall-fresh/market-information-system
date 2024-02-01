@@ -1,0 +1,40 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="join-market-modal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h3 class="text-center title" id="staticBackdropLabel">Join Market</h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          action="/scout/join-market"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <label class="mb-2">Market Name</label>
+          <select class="form-select" name="market_id">
+            {% for market in markets %}
+            <option value="{{ market[0]}}">{{ market[1]}}</option>
+            {% endfor %}
+          </select>
+
+          <button class="btn-blue mt-2">Join</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

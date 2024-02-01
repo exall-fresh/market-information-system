@@ -1,0 +1,92 @@
+<html>
+  <head>
+    {% include 'style.html'%} {% include 'admin/modals/add-market-modal.html'%}
+    {% include 'js.html'%}
+  </head>
+  <body class="bg-light">
+    {% include 'admin/header.html'%}
+    <div class="container">
+      <!-- lets show our alerts here-->
+
+      <br />
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <!-- succes messages -->
+
+      {% if category=="success"%}
+      <div class="alert alert-success">{{ message }}</div>
+      {% endif%}
+      <!-- end of success messages-->
+
+      <!-- error messages-->
+
+      {% if category=="error"%}
+      <div class="alert alert-danger">{{ message }}</div>
+      {% endif %}
+      <!-- end of error messages-->
+      {% endfor %} {% endif %} {% endwith %}
+      <!-- end of our alerts -->
+
+      <!-- home button -->
+
+      <!-- end of home button-->
+
+      <!-- button to add markets -->
+
+      <div class="d-flex justify-content-end mt-4 mb-1">
+        <button
+          class="btn-bordered-blue shadow"
+          data-toggle="modal"
+          data-target="#add-market-modal"
+        >
+          + Add Market
+        </button>
+      </div>
+      <!-- end of button to add markets -->
+      <table class="table-responsive">
+        <thead>
+          <tr>
+            <th class="text-white text-center">Market ID</th>
+            <th class="text-white text-center">Market Name</th>
+            <th class="text-white text-center">Market City</th>
+            <th class="text-white text-center">Market Coordinates</th>
+            <th class="text-white text-center">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for market in markets %}
+          <tr>
+            <td class="text-center">{{ market[0]}}</td>
+            <td class="text-center">{{ market[1] }}</td>
+            <td class="text-center">{{ market[2]}}</td>
+            <td class="text-center">{{ market[3] }}</td>
+
+            {% include 'admin/modals/edit-market-modal.html '%} {% include
+            'admin/modals/delete-market-modal.html'%}
+            <td class="text-center">
+              <button
+                class="btn-blue"
+                data-toggle="modal"
+                data-target="#edit-market-modal-{{ market[0]}}"
+              >
+                Edit
+              </button>
+              <button
+                class="btn-red"
+                data-toggle="modal"
+                data-target="#delete-market-modal-{{ market[0] }}"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          {% endfor%}
+        </tbody>
+      </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

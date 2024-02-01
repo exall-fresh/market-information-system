@@ -1,0 +1,46 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="add-trending-product-modal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h3 class="text-center title" id="staticBackdropLabel">
+          Create Trending Product
+        </h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          action="/scout/add-trending-product"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <label>Product Name</label>
+
+          <select type="text" class="form-select" name="product_name">
+            {% for product in products %}
+            <option value="{{ product[2]}}">{{ product[2]}}</option>
+            <br />
+
+            {% endfor %}
+          </select>
+          <br />
+
+          <button class="btn-blue">Create</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

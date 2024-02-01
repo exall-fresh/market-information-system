@@ -1,0 +1,51 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="edit-product-modal-{{ product[0]}}"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h3 class="text-center title" id="staticBackdropLabel">Edit Product</h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          action="/seller/edit-product/{{ product[0]}}"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <label>Product Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="product_name"
+            value="{{
+            product[2]}}"
+          /><br />
+
+          <label>Price</label>
+          <input
+            type="text"
+            class="form-control"
+            name="price"
+            value="{{
+            product[3]}}"
+          /><br />
+
+          <button class="btn-blue">Edit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

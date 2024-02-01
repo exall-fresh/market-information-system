@@ -1,0 +1,34 @@
+<!-- Modal -->
+<div
+  class="modal fade modal-sm"
+  id="delete-market-modal-{{ market[0] }}"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-0 d-flex justify-content-center">
+        <button
+          type="button"
+          class="btn-close"
+          data-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex justify-content-center">
+          Are you sure you want to delete the {{ market[1]}} permanently
+          <br />
+        </div>
+        <div class="d-flex justify-content-center mt-4">
+          <a href="/admin/delete-market/{{ market[0]}}" class="btn-red">
+            Delete
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

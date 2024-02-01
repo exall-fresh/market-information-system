@@ -1,0 +1,89 @@
+<html>
+  <head>
+    {% include 'style.html'%} {% include 'js.html'%}
+  </head>
+  <body>
+    {% include 'scout/header.html'%}
+    <!-- the cards section -->
+
+    {% include 'scout/modals/join-market-modal.html'%}
+
+    <div class="cards-section">
+      <!-- row-->
+      <div class="row">
+        <h3 class="title-sm mb-4">Scouts Dashboard</h3>
+
+        <!-- alerts section -->
+
+        {% if market_name=="None"%}
+
+        <div class="alert alert-danger">
+          You are not part of any market !<button
+            class="btn"
+            data-toggle="modal"
+            data-target="#join-market-modal"
+          >
+            <strong> Join Market </strong>
+          </button>
+        </div>
+
+        {% endif %} {% with messages =
+        get_flashed_messages(with_categories=true) %} {% if messages %} {% for
+        category, message in messages %}
+        <!-- succes messages -->
+
+        {% if category=="success"%}
+        <div class="alert alert-success">{{ message }}</div>
+        {% endif%}
+        <!-- end of success messages-->
+
+        <!-- error messages-->
+
+        {% if category=="error"%}
+        <div class="alert alert-danger">{{ message }}</div>
+        {% endif %}
+        <!-- end of error messages-->
+        {% endfor %} {% endif %} {% endwith %}
+        <!-- end of our alerts -->
+
+        <!-- end of alerts-->
+
+        <!-- markets card-->
+        <div class="col-xl-4">
+          <div class="car border-0 shadow">
+            <h5 class="text-center pt-4">
+              <strong class="figure">{{ products_count }}</strong>
+            </h5>
+            <h5 class="text-center pb-4">Products List</h5>
+          </div>
+        </div>
+        <!-- end of the markets card-->
+
+        <!-- sellers card-->
+        <div class="col-xl-4">
+          <div class="car border-0 shadow">
+            <h5 class="text-center pt-4">
+              <strong class="figure">{{ trending_products_count }}</strong>
+            </h5>
+            <h5 class="text-center pb-4">Trending Products</h5>
+          </div>
+        </div>
+        <!-- end of the sellers card-->
+
+        <!-- scouts card-->
+        <div class="col-xl-4">
+          <div class="car border-0 shadow">
+            <h5 class="text-center pt-4">
+              <br />
+              <strong class="title">{{ market_name }}</strong>
+            </h5>
+            <h5 class="text-center pb-4">My Market</h5>
+          </div>
+        </div>
+        <!-- end of the scouts card-->
+      </div>
+      <!-- end of the row-->
+    </div>
+    <!-- end of the cards section-->
+  </body>
+</html>

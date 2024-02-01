@@ -1,0 +1,68 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="edit-market-modal-{{ market[0] }}"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h3 class="text-center title" id="staticBackdropLabel">Edit Market</h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          action="/admin/edit-market/{{ market[0] }}"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <label for="market_name">Market Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="market_name"
+            name="market_name"
+            value="{{ market[1] }}"
+          /><br />
+
+          <label for="city">City</label>
+          <input
+            type="text"
+            class="form-control"
+            id="city"
+            name="city"
+            value="{{ market[2] }}"
+          /><br />
+
+          <label for="coordinates">Coordinates</label>
+          <input
+            type="text"
+            class="form-control"
+            id="coordinates"
+            name="coordinates"
+            value="{{ market[3] }}"
+          /><br />
+
+          <label for="photo">Photo of Market</label>
+          <input
+            type="file"
+            class="form-control"
+            id="photo"
+            name="photo"
+          /><br />
+
+          <button type="submit" class="btn btn-primary">Edit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

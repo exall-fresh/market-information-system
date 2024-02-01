@@ -1,0 +1,182 @@
+<html>
+  <head>
+    {% include 'style.html'%} {% include 'scout/modals/add-product-modal.html'%}
+    {% include '/scout/modals/add-trending-product-modal.html'%} {% include
+    'js.html'%}
+  </head>
+  <body class="bg-light">
+    {% include 'scout/header.html' %}
+    <div class="container">
+      <!-- lets show our alerts here-->
+
+      <br />
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <!-- succes messages -->
+
+      {% if category=="success"%}
+      <div class="alert alert-success">{{ message }}</div>
+      {% endif%}
+      <!-- end of success messages-->
+
+      <!-- error messages-->
+
+      {% if category=="error"%}
+      <div class="alert alert-danger">{{ message }}</div>
+      {% endif %}
+      <!-- end of error messages-->
+      {% endfor %} {% endif %} {% endwith %}
+      <!-- end of our alerts -->
+
+      <!-- home button -->
+
+      <!-- end of home button-->
+
+      <!-- row -->
+      <div class="row">
+        <!-- col for products -->
+        <div class="col-xl-6">
+          <div class="row">
+            <div class="col-xl-6">
+              <h3 class="title mt-4">Products list</h3>
+            </div>
+
+            <div class="col-xl-6">
+              <!-- button to add markets -->
+              <div class="d-flex justify-content-end mt-4 mb-1">
+                <button
+                  class="btn-bordered-blue shadow"
+                  data-toggle="modal"
+                  data-target="#add-product-modal"
+                >
+                  + Add Product
+                </button>
+              </div>
+            </div>
+            <!-- end of button to add markets -->
+          </div>
+
+          <table class="table-responsive">
+            <thead>
+              <tr>
+                <th class="text-white text-center">Product Name</th>
+                <th class="text-white text-center">Price</th>
+                <th class="text-white text-center">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for product in products %}
+              <tr>
+                <td class="text-center">{{ product[2] }}</td>
+                <td class="text-center">{{ product[3] }}</td>
+
+                <!-- our modal includes -->
+
+                {% include 'seller/modals/edit-product-modal.html'%} {% include
+                'seller/modals/delete-product-modal.html'%}
+
+                <!-- end of our modal includes-->
+                <td class="text-center">
+                  <button
+                    class="btn-blue"
+                    data-toggle="modal"
+                    data-target="#edit-product-modal-{{ product[0]}}"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    class="btn-red"
+                    data-toggle="modal"
+                    data-target="#delete-product-modal-{{ product[0]}}"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+              {% endfor %}
+
+              <!-- Display "Zero bro" message if there are no sellers -->
+              {% if products|length == 0 %}
+              <tr>
+                <td colspan="4" class="text-center">
+                  <br />No trending products to show
+                </td>
+              </tr>
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+        <!-- end of col for products -->
+
+        <!-- col for products -->
+        <div class="col-xl-6">
+          <!-- button to add markets -->
+          <div class="row">
+            <div class="col-xl-6">
+              <h3 class="title mt-4">Trending products</h3>
+            </div>
+            <div class="col-xl-6">
+              <div class="d-flex justify-content-end mt-4 mb-1">
+                <button
+                  class="btn-bordered-blue shadow"
+                  data-toggle="modal"
+                  data-target="#add-trending-product-modal"
+                >
+                  + Add Product
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- end of button to add markets -->
+
+          <table class="table-responsive">
+            <thead>
+              <tr>
+                <th class="text-white text-center">Product Name</th>
+                <th class="text-white text-center">Action</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for trending_product in trending_products %}
+              <tr>
+                <td class="text-center">{{ trending_product[1] }}</td>
+
+                <!-- our modal includes -->
+
+                <!-- end of our modal includes-->
+
+                <td class="text-center">
+                  <button
+                    class="btn-red"
+                    data-toggle="modal"
+                    data-target="#delete-product-modal-{{ trending_product[0]}}"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+              {% endfor %}
+
+              <!-- Display "Zero bro" message if there are no sellers -->
+              {% if trending_products|length == 0 %}
+              <tr>
+                <td colspan="4" class="text-center">
+                  <br />
+                  No trending products to show
+                </td>
+              </tr>
+              {% endif %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- end of col for products -->
+    </div>
+    <!-- end of the row -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,88 @@
+<html>
+  <head>
+    {% include 'style.html'%} {% include 'js.html'%}
+  </head>
+  <body class="bg-light">
+    {% include 'admin/header.html'%}
+    <!-- the cards section -->
+
+    <div class="cards-section">
+      <!-- row-->
+      <div class="row">
+        <h3 class="title-sm mb-4 ml-4">Admin Dashboard</h3>
+        <!-- markets card-->
+        <div class="col-xl-4">
+          <div class="car border-0 shadow">
+            <h5 class="text-center pt-4">
+              <strong class="figure">50</strong>
+            </h5>
+            <h5 class="text-center pb-4">Markets</h5>
+          </div>
+        </div>
+        <!-- end of the markets card-->
+
+        <!-- sellers card-->
+        <div class="col-xl-4">
+          <div class="car border-0 shadow">
+            <h5 class="text-center pt-4">
+              <strong class="figure">50</strong>
+            </h5>
+            <h5 class="text-center pb-4">Sellers</h5>
+          </div>
+        </div>
+        <!-- end of the sellers card-->
+
+        <!-- scouts card-->
+        <div class="col-xl-4">
+          <div class="car border-0 shadow">
+            <h5 class="text-center pt-4">
+              <strong class="figure">50</strong>
+            </h5>
+            <h5 class="text-center pb-4">Scouts</h5>
+          </div>
+        </div>
+        <!-- end of the scouts card-->
+      </div>
+      <!-- end of the row-->
+    </div>
+    <!-- end of the cards section-->
+
+    <!-- graph section -->
+
+    <div class="graph-section">
+      <h3 class="title-sm">Product Prices across Markets</h3>
+    </div>
+    <!-- end of the graph section-->
+
+    <script>
+      // Example data (replace this with your data)
+      var options = {
+        chart: {
+          type: "bar",
+        },
+        series: [
+          {
+            name: "Sales",
+            data: [30, 40, 35, 50, 49, 60, 70, 91, 125],
+          },
+        ],
+        xaxis: {
+          categories: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+          ],
+        },
+      };
+
+      var chart = new ApexCharts(document.querySelector("#chart"), options);
+      chart.render();
+    </script>
+  </body>
+</html>

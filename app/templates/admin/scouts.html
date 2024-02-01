@@ -1,0 +1,67 @@
+<html>
+  <head>
+    {% include 'style.html'%} {% include 'admin/modals/add-market-modal.html'%}
+    {% include 'js.html'%}
+  </head>
+  <body class="bg-light">
+    {% include 'admin/header.html' %}
+    <div class="container">
+      <!-- lets show our alerts here-->
+
+      <br />
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <!-- succes messages -->
+
+      {% if category=="success"%}
+      <div class="alert alert-success">{{ message }}</div>
+      {% endif%}
+      <!-- end of success messages-->
+
+      <!-- error messages-->
+
+      {% if category=="error"%}
+      <div class="alert alert-danger">{{ message }}</div>
+      {% endif %}
+      <!-- end of error messages-->
+      {% endfor %} {% endif %} {% endwith %}
+      <!-- end of our alerts -->
+
+      <!-- home button -->
+
+      <!-- end of home button-->
+
+      <table class="table-responsive">
+        <thead>
+          <tr>
+            <th class="text-white text-center">Scout ID</th>
+            <th class="text-white text-center">Scout Name</th>
+            <th class="text-white text-center">Phone</th>
+            <th class="text-white text-center">Email</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% for scout in scouts %}
+          <tr>
+            <td class="text-center">{{ scout[0] }}</td>
+            <td class="text-center">{{ scout[1] }}</td>
+            <td class="text-center">{{ scout[2] }}</td>
+            <td class="text-center">{{ scout[3] }}</td>
+          </tr>
+          {% endfor %}
+
+          <!-- Display "Zero bro" message if there are no Scouts -->
+          {% if scout|length==0 %}
+          <tr>
+            <td colspan="4" class="text-center"><br />No Scouts to show</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

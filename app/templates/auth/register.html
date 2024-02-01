@@ -1,0 +1,53 @@
+<html>
+  <head>
+    {% include 'style.html'%}
+  </head>
+  <body class='bg-light'>
+    <br /><br />
+    <div class="d-flex justify-content-center">
+      <div class="col-xl-4 mt-4 bg-white shadow">
+        <div class='container'>
+        <form action='/register-auth' method='post'>
+          <h5 class="text-center mt-4 title">Register</h5>
+          <br />
+
+          <!-- lets show our alerts here-->
+
+          {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          
+                {% for category, message in messages %}
+                    <div class="alert-danger alert">{{ message }}</div>
+                {% endfor %}
+          
+        {% endif %}
+    {% endwith %}
+
+          <!-- end of our alerts -->
+          <label >Username</label> <strong> <sup class='text-danger'>*</sup> </strong>
+          <input type="text" class="form-control" name='username'/><br />
+          <label>Phone</label><strong> <sup class='text-danger'>*</sup> </strong>
+          <input type="text" class="form-control" name='phone'/><br /> 
+          <label>Email</label><strong> <sup class='text-danger'>*</sup> </strong>
+          <input type="text" class="form-control" name='email'/><br />
+          <label>Register as</label><strong> <sup class='text-danger'>*</sup> </strong>
+          <select class='form-select' name='role'>
+            <option value='1'>Admin</option>
+            <option value='2'>Seller</option>
+            <option value='3'>Scout</option>
+          </select><br />
+          
+          <label>Password</label><strong> <sup class='text-danger'>*</sup> </strong>
+          <input type="password" class="form-control" name='password1'/>
+          <br />
+          <label>Confirm Password</label><strong> <sup class='text-danger'>*</sup> </strong>
+          <input type="password" class="form-control" name='password2'/>
+          <button class="btn-blue btn-rounded mt-2">Register</button>
+          <p class='mt-2'>Already have an account?</p3>
+            <a href='/login'>Login</a>
+        </form>
+      </div>
+      </div>
+    </div>
+  </body>
+</html>

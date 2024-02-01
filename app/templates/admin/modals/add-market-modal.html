@@ -1,0 +1,47 @@
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="add-market-modal"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header border-0">
+        <h3 class="text-center title" id="staticBackdropLabel">
+          Create Market
+        </h3>
+        <button
+          type="button"
+          class="btn-close"
+          data-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form
+          action="/admin/add-market"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          <label>Market Name</label>
+          <input type="text" class="form-control" name="market_name" /><br />
+
+          <label>City</label>
+          <input type="text" class="form-control" name="city" /><br />
+
+          <label>Coordinates</label>
+          <input type="text" class="form-control" name="coordinates" /><br />
+
+          <label>Photo of Market</label>
+          <input type="file" class="form-control" name="photo" /><br />
+
+          <button class="btn-blue">Create</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
